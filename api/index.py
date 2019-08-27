@@ -55,7 +55,7 @@ class handler(BaseHTTPRequestHandler):
                 new_x -= 1
 
 
-            if new_y >= 0 and < len(grid) and new_x >=0 and < len(grid[new_y]):
+            if new_y >= 0 and new_y < len(grid) and new_x >=0 and new_x < len(grid[new_y]):
                 
                 cell = grid[new_y][new_x]
 
