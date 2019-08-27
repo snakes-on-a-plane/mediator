@@ -31,28 +31,44 @@ class handler(BaseHTTPRequestHandler):
 
         player_pos = {'x':2,'y':2}
 
-        if direction and player_x and player_y:
-            
-            player_pos = {'x':int(player_x),'y':int(player_y)}
-
-            if direction == 'north':
-                player_pos['y'] -= 1
-            elif direction == 'south':
-                player_pos['y'] += 1
-            elif direction == 'east':
-                player_pos['x'] += 1
-            elif direction == 'west':
-                player_pos['x'] -= 1
-
-
-        game = {
-            'player_pos': player_pos,
-            'grid': [
+        grid = [
                 ['entrance','aisle','aisle','aisle','aisle','facility','facility','facility','wall'],
                 ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
                 ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
                 ['exit','seat','seat','seat','aisle','seat','seat','seat','exit'],
             ]
+
+        if direction and player_x and player_y:
+            
+            player_pos = {'x':int(player_x),'y':int(player_y)}
+
+            new_x = player_pos['x']
+            new_y = player_pos['y']
+
+            if direction == 'up':
+                new_y -= 1
+            elif direction == 'down':
+                new_y += 1
+            elif direction == 'right':
+                new_x += 1
+            elif direction == 'left':
+                new_x -= 1
+
+
+            if new_y >= 0 and < len(grid) and new_x >=0 and < len(grid[new_y]):
+                
+                cell = grid[new_y][new_x]
+
+                illegals = ('facility','wall')
+                
+                if not cell in illegals:
+                    player_pos['x'] = new_x
+                    player_pos['y'] = new_y
+
+
+        game = {
+            'player_pos': player_pos,
+            'grid': grid
         }
 
         message = json.dumps(game)
