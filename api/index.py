@@ -36,6 +36,9 @@ class handler(BaseHTTPRequestHandler):
                 ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
                 ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
                 ['exit','seat','seat','seat','aisle','seat','seat','seat','exit'],
+                ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
+                ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
+                ['exit','seat','seat','seat','aisle','seat','seat','seat','exit'],
             ]
 
         if direction and player_x and player_y:
@@ -65,7 +68,7 @@ class handler(BaseHTTPRequestHandler):
 
                 if cell is 'seat' and new_y is player_pos['y']:
                     valid_move = True
-                elif not cell in ('facility','wall'):
+                elif cell is 'aisle':
                     valid_move = True
                     
 
