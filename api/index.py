@@ -55,15 +55,23 @@ class handler(BaseHTTPRequestHandler):
                 new_x -= 1
 
 
-            if new_y >= 0 and new_y < len(grid) and new_x >=0 and new_x < len(grid[new_y]):
+            valid_move = False
+
+            in_bounds = new_y >= 0 and new_y < len(grid) and new_x >=0 and new_x < len(grid[new_y])
+
+            if in_bounds:
                 
                 cell = grid[new_y][new_x]
 
-                illegals = ('facility','wall')
-                
-                if not cell in illegals:
-                    player_pos['x'] = new_x
-                    player_pos['y'] = new_y
+                if cell is 'seat' and new_y is player_pos['y']:
+                    valid_move = True
+                elif not cell in ('facility','wall'):
+                    valid_move = True
+                    
+
+            if valid_move:
+                player_pos['x'] = new_x
+                player_pos['y'] = new_y
 
 
         game = {
