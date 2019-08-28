@@ -68,7 +68,7 @@ class handler(BaseHTTPRequestHandler):
 
                 if cell is 'seat' and new_y is player_pos['y']:
                     valid_move = True
-                elif not cell in ('facility','wall'):
+                elif seat is 'aisle':
                     valid_move = True
                     
 
