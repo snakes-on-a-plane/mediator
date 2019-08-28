@@ -36,6 +36,9 @@ class handler(BaseHTTPRequestHandler):
                 ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
                 ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
                 ['exit','seat','seat','seat','aisle','seat','seat','seat','exit'],
+                ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
+                ['wall','seat','seat','seat','aisle','seat','seat','seat','wall'],
+                ['exit','seat','seat','seat','aisle','seat','seat','seat','exit'],
             ]
 
         if direction and player_x and player_y:
